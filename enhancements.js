@@ -292,3 +292,47 @@ function deleteRoute(from, to) {
   return fares;
 }
 
+
+// ==================================================
+// TESTING ALL FUNCTIONS
+// ==================================================
+
+console.log("\n========= VALIDATION TESTS =========");
+
+console.log(validateFare("Banjul", "Banjul", "Taxi", 20));
+console.log(validateFare("Banjul", "Serekunda", "Plane", 20));
+console.log(validateFare("Banjul", "Serekunda", "Taxi", -10));
+console.log(validateFare("Banjul", "Serekunda", "Taxi", 25));
+
+
+
+console.log("\n========= STATISTICS =========");
+
+console.log("Average Fare Price:", calculateAverageFare());
+
+console.log("Most Expensive Route:");
+console.table([getMostExpensiveRoute()]);
+
+console.log("Cheapest Vehicle Type:", getCheapestVehicleType());
+
+console.log("Most Common Route:", getMostCommonRoute());
+
+
+
+console.log("\n========= BULK OPERATIONS =========");
+
+console.log("Increase Taxi fares by 10%");
+increaseVehicleFares("Taxi", 10);
+
+console.table(fares);
+
+
+
+console.log("\nDelete route Banjul → Serekunda");
+
+deleteRoute("Banjul", "Serekunda");
+
+console.table(fares);
+
+
+
