@@ -15,3 +15,29 @@ const fares = [
   { id: 7, from: "Farafenni", to: "Banjul", vehicleType: "7-Seater", price: 50 },
   { id: 8, from: "Farafenni", to: "Banjul", vehicleType: "Bus", price: 35 }
 ];
+
+
+// --------------------------------------------------
+// 1️⃣ Group fares by vehicle type
+// --------------------------------------------------
+const faresByVehicle = fares.reduce((acc, fare) => {
+  if (!acc[fare.vehicleType]) acc[fare.vehicleType] = [];
+  acc[fare.vehicleType].push(fare);
+  return acc;
+}, {});
+
+console.log("\n===== FARES BY VEHICLE TYPE =====");
+console.log(faresByVehicle);
+
+// --------------------------------------------------
+// 2️⃣ Group fares by route (from → to)
+// --------------------------------------------------
+const faresByRoute = fares.reduce((acc, fare) => {
+  const route = `${fare.from}-${fare.to}`;
+  if (!acc[route]) acc[route] = [];
+  acc[route].push(fare);
+  return acc;
+}, {});
+
+console.log("\n===== FARES BY ROUTE =====");
+console.log(faresByRoute);
