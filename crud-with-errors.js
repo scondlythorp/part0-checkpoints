@@ -77,3 +77,25 @@ function deleteFare(id) {
   return removed;
 }
 
+
+// --------------------------------------------------
+// 5️⃣ Testing the Functions
+// --------------------------------------------------
+console.log("\n--- CREATE TESTS ---");
+console.log(createFare({ from: "Banjul", to: "Banjul", vehicleType: "Taxi", price: 10 })); // Error: same from/to
+console.log(createFare({ from: "Brikama", to: "Banjul", vehicleType: "Plane", price: 15 })); // Error: invalid vehicle
+console.log(createFare({ from: "Brikama", to: "Banjul", vehicleType: "Taxi", price: 0 })); // Error: price <=0
+console.log(createFare({ from: "Brikama", to: "Banjul", vehicleType: "Bus", price: 18 })); // Success
+
+console.log("\n--- READ TESTS ---");
+console.log(findFareByRoute("Banjul", "Serekunda")); // Success
+console.log(findFareByRoute("Bakau", "Brikama")); // Error
+
+console.log("\n--- UPDATE TESTS ---");
+console.log(updateFare(2, { price: -5 })); // Error
+console.log(updateFare(2, { price: 15, vehicleType: "Taxi" })); // Success
+console.log(updateFare(99, { price: 20 })); // Error: id not found
+
+console.log("\n--- DELETE TESTS ---");
+console.log(deleteFare(1)); // Success
+console.log(deleteFare(1)); // Error: already deleted
