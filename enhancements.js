@@ -83,3 +83,40 @@ const fares = [
   }
 
 ];
+
+
+// --------------------------------------------------
+// VALID VEHICLE TYPES
+// --------------------------------------------------
+
+const validVehicles = ["Taxi", "Bus", "Gelegele", "7-Seater"];
+
+
+// ==================================================
+// 1️⃣ VALIDATION FUNCTION
+// ==================================================
+
+/*
+Checks if fare data is valid before saving it.
+*/
+
+function validateFare(from, to, vehicleType, price) {
+
+  // Check if price is a number
+  if (typeof price !== "number" || price <= 0) {
+    return "Error: Price must be a positive number.";
+  }
+
+  // Origin and destination cannot be the same
+  if (from === to) {
+    return "Error: From and To locations cannot be the same.";
+  }
+
+  // Vehicle type must exist
+  if (!validVehicles.includes(vehicleType)) {
+    return "Error: Invalid vehicle type.";
+  }
+
+  return "Fare is valid.";
+}
+
