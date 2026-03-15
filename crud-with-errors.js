@@ -42,3 +42,38 @@ function findFareById(id) {
   const fare = fares.find(f => f.id === id);
   return fare || `Error: Fare with ID ${id} not found.`;
 }
+
+// --------------------------------------------------
+// 3️⃣ Update Fare
+// --------------------------------------------------
+function updateFare(id, updates) {
+  const fare = fares.find(f => f.id === id);
+  if (!fare) return `Error: Fare with ID ${id} not found.`;
+
+  if (updates.from && updates.to && updates.from === updates.to) {
+    return "Error: 'From' and 'To' cannot be the same.";
+  }
+
+  if (updates.vehicleType && !validVehicles.includes(updates.vehicleType)) {
+    return "Error: Invalid vehicle type.";
+  }
+
+  if (updates.price != null && updates.price <= 0) {
+    return "Error: Price must be positive.";
+  }
+
+  Object.assign(fare, updates);
+  return fare;
+}
+
+// --------------------------------------------------
+// 4️⃣ Delete Fare
+// --------------------------------------------------
+function deleteFare(id) {
+  const index = fares.findIndex(f => f.id === id);
+  if (index === -1) return `Error: Fare with ID ${id} not found or already deleted.`;
+
+  const removed = fares.splice(index, 1)[0];
+  return removed;
+}
+
