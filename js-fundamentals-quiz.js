@@ -45,6 +45,10 @@ console.log("Fares under D20:", cheapFares);
 const specificFare = fares.find(f => f.vehicle === "Taxi");
 console.log("Taxi Fare Found:", specificFare);
 
+// 5. Template Literals
+const message = `Fare from ${taxiFare.from} to ${taxiFare.to} by ${taxiFare.vehicleType} costs D${taxiFare.price}`;
+console.log(message);
+
 
 
 
