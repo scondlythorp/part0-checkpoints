@@ -118,5 +118,122 @@ function validateFare(from, to, vehicleType, price) {
   }
 
   return "Fare is valid.";
+
+}
+
+
+// ==================================================
+// 2️⃣ STATISTICS FUNCTIONS
+// ==================================================
+
+
+// --------------------------------------------
+// Average Fare Price
+// --------------------------------------------
+
+function calculateAverageFare() {
+
+  // Prevent division by zero
+  if (fares.length === 0) {
+    return "No fares available";
+  }
+
+  let total = 0;
+
+  fares.forEach(fare => {
+    total += fare.price;
+  });
+
+  return total / fares.length;
+}
+
+
+
+// --------------------------------------------
+// Most Expensive Route
+// --------------------------------------------
+
+function getMostExpensiveRoute() {
+
+  if (fares.length === 0) {
+    return "No fares available";
+  }
+
+  let mostExpensive = fares[0];
+
+  fares.forEach(fare => {
+
+    if (fare.price > mostExpensive.price) {
+      mostExpensive = fare;
+    }
+
+  });
+
+  return mostExpensive;
+}
+
+
+
+// --------------------------------------------
+// Cheapest Vehicle Type
+// --------------------------------------------
+
+function getCheapestVehicleType() {
+
+  if (fares.length === 0) {
+    return "No fares available";
+  }
+
+  let cheapest = fares[0];
+
+  fares.forEach(fare => {
+
+    if (fare.price < cheapest.price) {
+      cheapest = fare;
+    }
+
+  });
+
+  return cheapest.vehicleType;
+}
+
+
+
+// --------------------------------------------
+// Most Common Route
+// --------------------------------------------
+
+function getMostCommonRoute() {
+
+  if (fares.length === 0) {
+    return "No fares available";
+  }
+
+  const routeCount = {};
+
+  fares.forEach(fare => {
+
+    const route = `${fare.from}-${fare.to}`;
+
+    // Count route occurrences
+    routeCount[route] = (routeCount[route] || 0) + 1;
+
+  });
+
+  let mostCommon = null;
+  let highestCount = 0;
+
+  for (let route in routeCount) {
+
+    if (routeCount[route] > highestCount) {
+
+      highestCount = routeCount[route];
+      mostCommon = route;
+
+    }
+
+  }
+
+  return mostCommon;
 }
 
