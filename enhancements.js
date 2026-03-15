@@ -237,3 +237,58 @@ function getMostCommonRoute() {
   return mostCommon;
 }
 
+
+// ==================================================
+// 3️⃣ BULK OPERATIONS
+// ==================================================
+
+
+// --------------------------------------------
+// Increase fares by percentage
+// --------------------------------------------
+
+function increaseVehicleFares(vehicleType, percentage) {
+
+  // Validate vehicle type
+  if (!validVehicles.includes(vehicleType)) {
+    console.log("Invalid vehicle type.");
+    return;
+  }
+
+  fares.forEach(fare => {
+
+    if (fare.vehicleType === vehicleType) {
+
+      const increase = fare.price * (percentage / 100);
+
+      // Round to nearest Dalasi
+      fare.price = Math.round(fare.price + increase);
+
+    }
+
+  });
+
+  return fares;
+}
+
+
+
+// --------------------------------------------
+// Delete all fares for a route
+// --------------------------------------------
+
+function deleteRoute(from, to) {
+
+  for (let i = fares.length - 1; i >= 0; i--) {
+
+    if (fares[i].from === from && fares[i].to === to) {
+
+      fares.splice(i, 1);
+
+    }
+
+  }
+
+  return fares;
+}
+
