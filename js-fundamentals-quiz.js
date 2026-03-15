@@ -30,3 +30,24 @@ const fares = [
   { id: 3, from: "Bakau",     to: "Serekunda",  vehicle: "Gelegele", price: 8  }
 ];
 
+
+// 4. Array Methods
+
+// .map() -> get all prices
+const prices = fares.map(f => f.price);
+console.log("Prices:", prices);
+
+// .filter() -> fares under D20
+const cheapFares = fares.filter(f => f.price < 20);
+console.log("Fares under D20:", cheapFares);
+
+// .find() -> specific fare
+const specificFare = fares.find(f => f.vehicle === "Taxi");
+console.log("Taxi Fare Found:", specificFare);
+
+
+
+
+
+
+
