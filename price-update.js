@@ -82,3 +82,12 @@ const logData = updatePrices(15);
 
 console.log("\n===== UPDATED FARES =====");
 console.table(fares);
+
+
+// --------------------------------------------------
+// Save log file
+// --------------------------------------------------
+
+fs.writeFileSync("price-changes.log", logData);
+
+console.log("\nLog saved to price-changes.log");
